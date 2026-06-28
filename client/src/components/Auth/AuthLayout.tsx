@@ -130,7 +130,14 @@ function AuthLayout({
 
       {/* Formulario */}
       <main className="relative flex flex-1 items-center justify-center" style={{ background: IVORY, padding: '40px 28px' }}>
-        <div className="w-full" style={{ maxWidth: 400 }}>
+        <div
+          style={{
+            position: 'absolute', inset: 0,
+            background: 'radial-gradient(90% 70% at 100% 0%, rgba(208,193,167,0.35), transparent 60%)',
+            pointerEvents: 'none',
+          }}
+        />
+        <div className="relative w-full" style={{ maxWidth: 400 }}>
           <div className="mb-7 flex items-center gap-3 md:hidden">
             <Simbolo size={38} />
             <Wordmark color={PETROL} size={20} />
