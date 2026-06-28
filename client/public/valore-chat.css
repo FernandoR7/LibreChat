@@ -1,0 +1,28 @@
+html, html.dark {
+  --surface-primary: #f4efe7;
+  --surface-primary-alt: #fcf8f2;
+  --surface-secondary: #fcf8f2;
+  --surface-tertiary: #fcf8f2;
+  --surface-chat: #f4efe7;
+  --surface-submit: #073b59;
+  --surface-submit-hover: #10222d;
+  --brand-purple: #c97533;
+  --text-primary: #10222d;
+  --border-light: #e0d8cb;
+  --border-medium: #d8d1c6;
+}
+/* Sidebar petrol: redefine as vars dentro do aside para o fade/hover combinarem */
+aside {
+  background: #073b59 !important;
+  --surface-primary-alt: #073b59;
+  --surface-active-alt: #0d4a6e;
+  --surface-hover: #0d4a6e;
+  --surface-hover-alt: #0d4a6e;
+  --text-primary: #f4efe7;
+  --border-light: rgba(244,239,231,0.12);
+  --border-medium: rgba(244,239,231,0.12);
+}
+aside, aside button, aside a, aside span, aside p, aside h2, aside h3 { color: #f4efe7 !important; }
+aside svg { color: #f4efe7 !important; }
+aside input { color: #f4efe7 !important; background: rgba(16,34,45,0.35) !important; }
+aside input::placeholder { color: rgba(244,239,231,0.55) !important; }
