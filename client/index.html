@@ -135,12 +135,63 @@
     </script>
     <script defer type="module" src="/src/main.jsx"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/valore-chat.css">
-  </head>
+  <style id="valore-theme">html, html.dark {
+  --surface-primary: #f4efe7;
+  --surface-primary-alt: #fcf8f2;
+  --surface-secondary: #fcf8f2;
+  --surface-tertiary: #fcf8f2;
+  --surface-chat: #f4efe7;
+  --surface-submit: #073b59;
+  --surface-submit-hover: #10222d;
+  --brand-purple: #c97533;
+  --text-primary: #10222d;
+  --border-light: #e0d8cb;
+  --border-medium: #d8d1c6;
+}
+/* Sidebar petrol: redefine as vars dentro do aside para o fade/hover combinarem */
+aside {
+  background: #073b59 !important;
+  --surface-primary-alt: #073b59;
+  --surface-active-alt: #0d4a6e;
+  --surface-hover: #0d4a6e;
+  --surface-hover-alt: #0d4a6e;
+  --text-primary: #f4efe7;
+  --border-light: rgba(244,239,231,0.12);
+  --border-medium: rgba(244,239,231,0.12);
+}
+aside, aside button, aside a, aside span, aside p, aside h2, aside h3 { color: #f4efe7 !important; }
+aside svg { color: #f4efe7 !important; }
+aside input { color: #f4efe7 !important; background: rgba(16,34,45,0.35) !important; }
+aside input::placeholder { color: rgba(244,239,231,0.55) !important; }
+</style>
+</head>
   <body>
     <div id="root">
       <div id="loading-container"></div>
     </div>
-    <script src="/valore-chat.js"></script>
-  </body>
+  <script id="valore-chat">(function () {
+  var IVORY = '#f4efe7', COPPER = '#c97533';
+  var SIM = '<svg viewBox="0 0 512 512" style="width:34px;height:34px;flex:0 0 auto" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="512" height="512" rx="72" fill="#f4efe7"/><path d="M128 148L252 250L170 287L170 359C170 386 194 410 221 410L221 439C177 439 141 403 141 359V179L128 148Z" fill="#073b59"/><path d="M384 178V344L260 452V352C260 300 287 261 333 233C354 220 371 202 384 178Z" fill="#073b59"/><path d="M214 430V338C214 292 236 258 281 230C321 205 345 175 356 133L411 133V185L374 185C361 208 344 226 321 240C286 263 268 291 268 330V430H214Z" fill="#c97533"/><path d="M194 421V334C194 279 220 239 266 211C304 188 327 162 338 122H366C354 175 327 215 285 240C244 264 222 298 222 345V421H194Z" fill="#d0c1a7"/></svg>';
+  function marca() {
+    if (document.getElementById('valore-brand')) return;
+    var nav = document.querySelector('aside nav') || document.querySelector('nav');
+    if (!nav) return;
+    var d = document.createElement('div');
+    d.id = 'valore-brand';
+    d.style.cssText = 'display:flex;align-items:center;gap:11px;padding:14px 16px 12px;flex:0 0 auto';
+    d.innerHTML = SIM + '<span style="font-family:Sora,sans-serif;font-weight:600;font-size:18px;letter-spacing:0.12em;color:' + IVORY + '">VALO<span style="color:' + COPPER + '">R</span>E</span>';
+    nav.insertBefore(d, nav.firstChild);
+  }
+  function footer() {
+    document.querySelectorAll('a[href*="ibreChat"], a[href*="ibrechat"]').forEach(function (a) {
+      var box = a.closest('div');
+      if (box) box.style.display = 'none';
+    });
+  }
+  function go() { try { marca(); footer(); } catch (e) {} }
+  new MutationObserver(go).observe(document.body, { childList: true, subtree: true });
+  go();
+})();
+</script>
+</body>
 </html>
